@@ -161,7 +161,8 @@
 
 			// Prepend the logger's name to the log message for easy identification.
 			if (context.name) {
-				messages[0] = "[" + context.name + "] " + messages[0];
+				messages = [].splice.call(messages, 0); //convert arguments to array
+				messages.splice(0, 0, '[' + context.name + ']'); //add contextName as first element
 			}
 			
 			// Delegate through to custom warn/error loggers if present on the console.
